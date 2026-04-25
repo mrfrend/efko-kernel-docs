@@ -1,0 +1,110 @@
+site_name: EFKO Kernel Documentation
+site_description: Полная техническая документация системы EFKO Kernel
+site_author: EFKO Team
+site_url: https://mrfrend.github.io/efko-kernel-docs/
+
+# Repository
+repo_url: https://github.com/mrfrend/efko-kernel-docs
+repo_name: mrfrend/efko-kernel-docs
+edit_uri: ""
+
+# Theme
+theme:
+  name: material
+  language: ru
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Переключить на темную тему
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Переключить на светлую тему
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+# Plugins
+plugins:
+  - search:
+      lang: ru
+
+# Markdown extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+
+# Navigation structure
+nav:
+  - Главная: README.md
+  - Начало работы:
+      - Архитектура системы: 01-architecture.md
+      - Quick Start: 02-quickstart.md
+      - Обзор проекта: project-overview.md
+  - API Reference:
+      - API Reference: 03-api-reference.md
+  - События:
+      - Events Catalog: 04-events.md
+  - Данные:
+      - Модели данных: 05-data-models.md
+  - Безопасность:
+      - Безопасность: 06-security.md
+      - CSRF защита: security/csrf-protection.md
+      - JWT Key Rotation: security/jwt-key-rotation.md
+  - Эксплуатация:
+      - Troubleshooting: 07-troubleshooting.md
+      - Observability: observability.md
+  - Для клиентов:
+      - Client Guide: 08-client-guide.md
+      - Client Guide (legacy): client-guide.md
+  - Сервисы:
+      - Gateway: gateway.md
+      - Auth Service: auth-service.md
+      - Personnel: personnel.md
+      - Production: production.md
+      - ETL: etl.md
+
+# Extra files
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mrfrend/efko-kernel
+
+# Copyright
+copyright: Copyright &copy; 2025 EFKO Team
+
+# Build directory
+site_dir: site
