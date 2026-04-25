@@ -74,3 +74,8 @@ repo_name: YOUR_USERNAME/efko-kernel-docs
 ## Примечание
 
 Скрипт `copy-docs.sh` жестко задан на `/home/ivan/projects/efko-kernel/docs`. Если путь изменится, отредактируйте скрипт.
+
+## Требования
+
+- Репозиторий `efko-kernel` должен быть публичным для автоматического чекаута в GitHub Actions
+- Если репозиторий приватный, добавьте secret `EFKO_KERNEL_ACCESS` с Personal Access Token в Settings → Secrets and variables → Actions
