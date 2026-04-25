@@ -27,6 +27,7 @@ jobs:
         with:
           repository: mrfrend/efko-kernel
           path: efko-kernel
+          ref: develop
           token: ${{ secrets.EFKO_KERNEL_ACCESS }}
 
       - name: Set up Python
