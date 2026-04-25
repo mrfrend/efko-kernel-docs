@@ -77,5 +77,19 @@ repo_name: YOUR_USERNAME/efko-kernel-docs
 
 ## Требования
 
-- Репозиторий `efko-kernel` должен быть публичным для автоматического чекаута в GitHub Actions
-- Если репозиторий приватный, добавьте secret `EFKO_KERNEL_ACCESS` с Personal Access Token в Settings → Secrets and variables → Actions
+- Репозиторий `efko-kernel` приватный, поэтому требуется Personal Access Token
+- Создайте Personal Access Token с правами `repo` (read access)
+- Добавьте токен как secret `EFKO_KERNEL_ACCESS` в Settings → Secrets and variables → Actions репозитория `efko-kernel-docs`
+
+### Создание Personal Access Token
+
+1. Перейдите на https://github.com/settings/tokens
+2. Нажмите "Generate new token (classic)"
+3. Назовите токен (например, "efko-kernel-docs")
+4. Выберите права: `repo` (read access)
+5. Сгенерируйте токен и скопируйте его
+6. Перейдите в репозиторий `efko-kernel-docs` → Settings → Secrets and variables → Actions
+7. Нажмите "New repository secret"
+8. Name: `EFKO_KERNEL_ACCESS`
+9. Value: вставьте сгенерированный токен
+10. Нажмите "Add secret"
