@@ -66,10 +66,21 @@ repo_name: YOUR_USERNAME/efko-kernel-docs
 
 ## Автоматическое обновление документации
 
+### Вариант 1: Ручное обновление
+
 При изменении документации в `efko-kernel`:
 1. Выполните `./scripts/copy-docs.sh`
 2. Закоммитьте и запушьте изменения
 3. GitHub Actions автоматически соберет и задеплоит документацию
+
+### Вариант 2: Автоматическое обновление через repository_dispatch
+
+При изменении документации в `efko-kernel` (папка `docs/`):
+1. Закоммитьте и запушьте изменения в ветку `main`
+2. GitHub Actions workflow `update_docs` автоматически отправит событие в `efko-kernel-docs`
+3. GitHub Actions workflow `deploy` в `efko-kernel-docs` автоматически соберет и задеплоит документацию
+
+Для работы автоматического обновления необходимо настроить секрет `DOCS_DEPLOY_PAT` в репозитории `efko-kernel` (см. инструкции выше).
 
 ## Примечание
 
@@ -77,11 +88,19 @@ repo_name: YOUR_USERNAME/efko-kernel-docs
 
 ## Требования
 
+### Секреты в efko-kernel-docs
+
 - Репозиторий `efko-kernel` приватный, поэтому требуется Personal Access Token
 - Создайте Personal Access Token с правами `repo` (read access)
 - Добавьте токен как secret `EFKO_KERNEL_ACCESS` в Settings → Secrets and variables → Actions репозитория `efko-kernel-docs`
 
-### Создание Personal Access Token
+### Секреты в efko-kernel
+
+- Для автоматического деплоя при изменении документации в efko-kernel требуется Personal Access Token
+- Создайте Personal Access Token с правами `repo` (write access для repository dispatch)
+- Добавьте токен как secret `DOCS_DEPLOY_PAT` в Settings → Secrets and variables → Actions репозитория `efko-kernel`
+
+### Создание Personal Access Token для efko-kernel-docs
 
 1. Перейдите на https://github.com/settings/tokens
 2. Нажмите "Generate new token (classic)"
@@ -91,5 +110,18 @@ repo_name: YOUR_USERNAME/efko-kernel-docs
 6. Перейдите в репозиторий `efko-kernel-docs` → Settings → Secrets and variables → Actions
 7. Нажмите "New repository secret"
 8. Name: `EFKO_KERNEL_ACCESS`
+9. Value: вставьте сгенерированный токен
+10. Нажмите "Add secret"
+
+### Создание Personal Access Token для efko-kernel
+
+1. Перейдите на https://github.com/settings/tokens
+2. Нажмите "Generate new token (classic)"
+3. Назовите токен (например, "docs-deploy-pat")
+4. Выберите права: `repo` (write access для repository dispatch)
+5. Сгенерируйте токен и скопируйте его
+6. Перейдите в репозиторий `efko-kernel` → Settings → Secrets and variables → Actions
+7. Нажмите "New repository secret"
+8. Name: `DOCS_DEPLOY_PAT`
 9. Value: вставьте сгенерированный токен
 10. Нажмите "Add secret"
