@@ -46,10 +46,12 @@ jobs:
       - name: Debug - list efko-kernel contents
         run: find efko-kernel -type d -maxdepth 3
 
-      - name: Copy documentation from efko-kernel
+      - name: Copy documentation and tooling from efko-kernel
         run: |
-          rm -rf docs
+          rm -rf docs overrides tools
           cp -r efko-kernel/docs docs
+          cp -r efko-kernel/overrides overrides
+          cp -r efko-kernel/tools tools
 
       - name: Build documentation
         run: mkdocs build

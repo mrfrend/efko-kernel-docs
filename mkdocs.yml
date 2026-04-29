@@ -11,6 +11,7 @@ edit_uri: ""
 # Theme
 theme:
   name: material
+  custom_dir: overrides
   language: ru
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -44,6 +45,12 @@ theme:
 plugins:
   - search:
       lang: ru
+
+hooks:
+  - tools/mkdocs_hooks.py
+
+watch:
+  - tools/mkdocs_hooks.py
 
 # Markdown extensions
 markdown_extensions:
